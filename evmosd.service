@@ -1,0 +1,11 @@
+# /etc/systemd/system/evmosd.service
+
+[Unit]
+Description=Evmos Daemon Service
+After=network.target
+
+[Service]
+User=root
+ExecStart=/root/go/bin/evmosd start --metrics "" --pruning nothing --log_level "info" --minimum-gas-prices=0.0001aevmos --json-rpc.api eth,txpool,personal,net,debug,web3 --ap>
+Restart=on-failure
+LimitNOFILE=4096
